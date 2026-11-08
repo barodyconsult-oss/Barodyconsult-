@@ -49,6 +49,46 @@ h2{font-size:26px;margin:0 0 18px;font-weight:800}
 .cta a{color:inherit;font-weight:700}
 .cta .btn{background:var(--accent-fg);color:var(--accent);margin:14px 4px 0}
 footer{padding:24px 0 40px;color:var(--muted);font-size:14px;text-align:center}
+.hero{position:relative;overflow:hidden;isolation:isolate}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;z-index:-1;animation:float 9s ease-in-out infinite}
+.b1{width:260px;height:260px;background:var(--accent);top:-60px;right:-60px}
+.b2{width:200px;height:200px;background:#ff9aa8;bottom:-40px;left:30%;animation-delay:-4s}
+@keyframes float{50%{transform:translate(-20px,24px) scale(1.1)}}
+#rot{display:inline-block;transition:opacity .3s}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:34px;max-width:560px}
+.stats div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+.stats b{display:block;font-size:30px;font-weight:900;color:var(--accent);line-height:1.1}
+.stats span{font-size:13px;color:var(--muted)}
+.card{transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(200,16,46,.18);border-color:var(--accent)}
+.btn{transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(200,16,46,.3)}
+.js .rv{opacity:0;translate:0 26px;transition:opacity .7s,translate .7s,transform .25s,box-shadow .25s,border-color .25s}
+.js .rv.in{opacity:1;translate:0 0}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::after{content:"+";color:var(--accent);font-size:22px;line-height:1;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:10px 0 0;color:var(--muted);font-size:15.5px}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));background:#25d366;color:#fff;text-decoration:none;font-weight:700;padding:12px 18px;border-radius:99px;box-shadow:0 6px 18px rgba(0,0,0,.25);z-index:20;animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+#bar{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:0;background:var(--accent);z-index:30}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;translate:none}}
+.plus::after{content:"+"}
+.clients{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.client{text-align:center;font-weight:800;font-size:20px;padding:28px 16px}
+.ft{border-top:1px solid var(--line);margin-top:30px;padding:36px 0 30px;text-align:left}
+.ft .cols{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.ft h4{margin:0 0 10px;color:var(--fg);font-size:15px;text-transform:uppercase;letter-spacing:.06em}
+.ft a{color:var(--muted);text-decoration:none;display:block;padding:3px 0}
+.ft a:hover{color:var(--accent)}
+.ft p{margin:0 0 8px}
+.soc{display:flex;gap:10px;margin-top:12px}
+.ft .soc a{width:44px;height:44px;border-radius:50%;background:var(--soft);display:grid;place-items:center;padding:0;transition:transform .2s,background .2s}
+.ft .soc a:hover{background:var(--accent);transform:translateY(-3px)}
+.soc svg{width:21px;height:21px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ft .soc a:hover svg{stroke:var(--accent-fg)}
+.ft .copy{border-top:1px solid var(--line);margin-top:26px;padding-top:18px;text-align:center;font-size:14px}
 </style>
 </head>
 <body>
@@ -58,11 +98,12 @@ footer{padding:24px 0 40px;color:var(--muted);font-size:14px;text-align:center}
   <nav><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#training">Training</a><a href="#contact">Contact</a></nav>
 </header>
 
-<div class="hero">
+<div class="hero"><i class="blob b1"></i><i class="blob b2"></i>
   <span class="tag">Professional Digital Marketing</span>
-  <h1>Grow Your Business <em>Online</em></h1>
+  <h1>Grow Your Business <em id="rot">Online</em></h1>
   <p class="lead">Tired of low sales and ghost followers? Let our expert team handle your marketing while you focus on running your business.</p>
   <a class="btn" href="#contact">Get started today</a><a class="btn alt" href="#pricing">See pricing</a>
+  <div class="stats"><div><b data-n="10" class="plus">10</b><span>Years experience</span></div><div><b data-n="4">4</b><span>Core services</span></div><div><b data-n="3">3</b><span>Monthly packages</span></div><div><b data-n="4">4</b><span>Platforms covered</span></div></div>
 </div>
 
 <section id="services">
@@ -85,6 +126,12 @@ footer{padding:24px 0 40px;color:var(--muted);font-size:14px;text-align:center}
   <p class="note">Note: Ad budgets paid directly to Meta or Google are not included in the management fees.</p>
 </section>
 
+<section id="clients">
+  <h2>Trusted By</h2>
+  <p class="lead" style="margin-top:0">10 years of helping brands grow online, including:</p>
+  <div class="clients" style="margin-top:18px"><div class="card client">British Council</div><div class="card client">Instant Pot Nigeria</div></div>
+</section>
+
 <section id="training">
   <h2>Digital Marketing Training</h2>
   <p class="lead" style="margin-top:0">Learn practical, hands-on digital marketing skills from the team that does it every day. Ideal for business owners, staff, and beginners.</p>
@@ -104,6 +151,13 @@ footer{padding:24px 0 40px;color:var(--muted);font-size:14px;text-align:center}
   </div>
 </section>
 
+<section id="faq">
+  <h2>Quick Answers</h2>
+  <details><summary>What does the monthly fee include?</summary><p>Content, monitoring, and ad management as listed in your chosen package. Ad budgets paid directly to Meta or Google are not included.</p></details>
+  <details><summary>Will I see how my marketing is performing?</summary><p>Yes. We believe in transparent reporting, so you always know what is working.</p></details>
+  <details><summary>How do I get started?</summary><p>Message us on WhatsApp or email, tell us about your business, and we will recommend the right package.</p></details>
+</section>
+
 <section id="contact" style="border-top:0">
   <div class="cta">
     <h2>Ready to Scale? Contact Us Today!</h2>
@@ -115,7 +169,43 @@ footer{padding:24px 0 40px;color:var(--muted);font-size:14px;text-align:center}
   </div>
 </section>
 
-<footer>&copy; 2026 Barody Consult. All rights reserved.</footer>
+<footer class="ft">
+  <div class="cols">
+    <div><h4>Barody Consult</h4><p>Professional digital marketing for smarter businesses. Social media, paid ads, SEO, and content design.</p>
+      <div class="soc">
+        <a href="https://instagram.com/barody_ng" target="_blank" rel="noopener" aria-label="Instagram @barody_ng"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+        <a href="https://facebook.com/barody_ng" target="_blank" rel="noopener" aria-label="Facebook @barody_ng"><svg viewBox="0 0 24 24"><path d="M14 21v-8h3l.5-3H14V8.5c0-1 .4-1.5 1.5-1.5h2V4.3C17.100 4.200 16 4 15 4c-2.300 0-4 1.400-4 4v2H8v3h3v8"/></svg></a>
+        <a href="https://tiktok.com/@barody_ng" target="_blank" rel="noopener" aria-label="TikTok @barody_ng"><svg viewBox="0 0 24 24"><path d="M15 3v11a4 4 0 1 1-4-4M15 3c.4 2.600 2 4.200 5 4.500"/></svg></a>
+        <a href="https://x.com/barody_ng" target="_blank" rel="noopener" aria-label="X @barody_ng"><svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+        <a href="https://wa.me/2348034292230" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M3 21l1.600-4.600A8.500 8.500 0 1 1 8 19.600L3 21z"/></svg></a>
+      </div>
+      <p style="margin-top:10px">Follow us <b>@barody_ng</b></p>
+    </div>
+    <div><h4>Quick links</h4><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#clients">Clients</a><a href="#training">Training</a><a href="#faq">FAQ</a></div>
+    <div><h4>Contact</h4><a href="tel:+2348034292230">+234 (0) 803 429 2230</a><a href="mailto:barodyconsult@gmail.com">barodyconsult@gmail.com</a><a href="https://wa.me/2348034292230">WhatsApp chat</a><p style="margin-top:6px">Ikeja, Lagos, Nigeria</p></div>
+  </div>
+  <div class="copy">&copy; 2026 Barody Consult. All rights reserved.</div>
+</footer>
 </div>
+<div id="bar"></div>
+<a class="wa" href="https://wa.me/2348034292230" aria-label="Chat on WhatsApp">&#128172; WhatsApp</a>
+<script>
+(function(){
+try{
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var els=document.querySelectorAll('.card,section h2,.why,.cta,.stats,details');
+function count(box){box.querySelectorAll('b[data-n]').forEach(function(b){var n=+b.dataset.n,s=null;function f(t){s=s||t;var p=Math.min((t-s)/1200,1);b.textContent=Math.round(n*p);if(p<1)requestAnimationFrame(f)}if(!rm){b.textContent=0;requestAnimationFrame(f)}})}
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.classList.add('in');if(t.classList.contains('stats'))count(t);setTimeout(function(){t.style.transitionDelay=''},1000);io.unobserve(t)}})},{threshold:.15});
+els.forEach(function(e,i){e.classList.add('rv');e.style.transitionDelay=(i%4)*80+'ms';io.observe(e)});
+document.documentElement.classList.add('js');
+}
+var bar=document.getElementById('bar');
+addEventListener('scroll',function(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.width=(m>0?h.scrollTop/m*100:0)+'%'},{passive:true});
+if(!rm){var w=['Online','on Instagram','on TikTok','on Google'],i=0,r=document.getElementById('rot');
+setInterval(function(){r.style.opacity=0;setTimeout(function(){i=(i+1)%w.length;r.textContent=w[i];r.style.opacity=1},300)},2800)}
+}catch(e){}
+})();
+</script>
 </body>
 </html>
